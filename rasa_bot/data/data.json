@@ -1,0 +1,203 @@
+{
+  "rasa_nlu_data": {
+  "common_examples": [
+    {
+    "text": "Hello",
+    "intent": "greeting",
+    "entities": []
+    },
+    {
+    "text": "Hi",
+    "intent": "greeting",
+    "entities": []
+    },
+    {
+    "text": "How are you?",
+    "intent": "greeting",
+    "entities": []
+    },
+    {
+    "text": "Good day",
+    "intent": "greeting",
+    "entities": []
+    },
+    {
+    "text": "how are ya",
+    "intent": "greeting",
+    "entities": []
+    },
+    {
+    "text": "heyy",
+    "intent": "greeting",
+    "entities": []
+    },
+    {
+    "text": "hey",
+    "intent": "greeting",
+    "entities": []
+    },
+    {
+    "text": "whatsup",
+    "intent": "greeting",
+    "entities": []
+    },
+    {
+    "text": "??? ??? ??",
+    "intent": "greeting",
+    "entities": []
+    },
+    {
+    "text": "cya",
+    "intent": "greeting",
+    "entities": []
+    },
+    {
+    "text": "Goodbye",
+    "intent": "greeting",
+    "entities": []
+    },
+    {
+    "text": "Bye",
+    "intent": "greeting",
+    "entities": []
+    },
+    {
+    "text": "Have a Good day",
+    "intent": "greeting",
+    "entities": []
+    },
+    {
+    "text": "talk to you later",
+    "intent": "greeting",
+    "entities": []
+    },
+    {
+    "text": "later",
+    "intent": "greeting",
+    "entities": []
+    },
+    {
+    "text": "change my next of kin",
+    "intent": "service",
+    "entities": [
+      {
+        "start": 10,
+        "end": 21,
+        "value": "next of kin",
+        "entity": "serviceOpt"
+      }
+    ]
+    },
+    {
+    "text": "change my nok",
+    "intent": "service",
+    "entities": [
+      {
+        "start": 10,
+        "end": 13,
+        "value": "nok",
+        "entity": "serviceOpt"
+      }
+    ]
+    },
+    {
+    "text": "i forgot my pin",
+    "intent": "service",
+    "entities": [
+      {
+        "start": 2,
+        "end": 8,
+        "value": "forgot",
+        "entity": "serviceOpt"
+      },
+      {
+        "start": 12,
+        "end": 15,
+        "value": "pin",
+        "entity": "serviceOpt"
+      }
+    ]
+    },
+    {
+    "text": "how can i retrieve my pin",
+    "intent": "service",
+    "entities": [
+      {
+        "start": 10,
+        "end": 18,
+        "value": "retrieve",
+        "entity": "serviceOpt"
+      },
+      {
+        "start": 22,
+        "end": 25,
+        "value": "pin",
+        "entity": "serviceOpt"
+      }
+    ]
+    },
+    {
+    "text": "change my employer",
+    "intent": "service",
+    "entities": [
+      {
+        "start": 10,
+        "end": 18,
+        "value": "employer",
+        "entity": "serviceOpt"
+      }
+    ]
+    },
+    {
+    "text": "can i get my account statement",
+    "intent": "service",
+    "entities": [
+      {
+        "start": 13,
+        "end": 20,
+        "value": "account",
+        "entity": "serviceOpt"
+      },
+      {
+        "start": 21,
+        "end": 30,
+        "value": "statement",
+        "entity": "serviceOpt"
+      }
+    ]
+    },
+    {
+    "text": "what is my balance",
+    "intent": "service",
+    "entities": [
+      {
+        "start": 11,
+        "end": 22,
+        "value": "balance",
+        "entity": "serviceOpt"
+      }
+    ]
+    },
+    {
+    "text": "I want to retrieve my RSA balance",
+    "intent": "service",
+    "entities": [
+      {
+        "start": 10,
+        "end": 18,
+        "value": "retrieve",
+        "entity": "serviceOpt"
+      },
+      {
+        "start": 26,
+        "end": 33,
+        "value": "balance",
+        "entity": "serviceOpt"
+      }
+    ]
+    }
+  ],
+  "regex_features" : [],
+  "entity_synonyms": []
+  }
+}

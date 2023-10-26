@@ -1,0 +1,67 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: say no
+  steps:
+    - intent: negation
+    - action: utter_goodbye
+
+- rule: Request phone_no anytime the user intents pin
+  steps:
+    - intent: pin
+    - action: utter_ask_phonenum
+
+- rule: Perform nlu fallback action
+  steps:
+    - intent: nlu_fallback
+    - action: action_nlu_fallback
+
+- rule: Activate Pin Form
+  steps:
+    - intent: affirm_pin
+    - action: pin_form
+    - active_loop: pin_form
+
+- rule: Submit Pin Form
+  condition:
+  # condition that form is active
+  - active_loop: pin_form
+  steps:
+  # form is deactivated
+  - action: pin_form
+  - active_loop: null
+  - slot_was_set:
+    - phonenum: null
+  # the actions we want to run when the form
+  - action: action_get_pin
+
+- rule: Activate Balance Form
+  steps:
+    - intent: affirm_balance_pen
+    - action: balance_form
+    - active_loop: balance_form
+
+- rule: Submit Balance Form
+  condition:
+  # condition that form is active
+  - active_loop: balance_form
+  steps:
+  # form is deactivated
+  - action: balance_form
+  - active_loop: null
+  - slot_was_set:
+    - pennum: null
+  # the actions we want to run when the form
+  - action: action_get_rsa_balance
+

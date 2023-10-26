@@ -1,0 +1,6 @@
+{
+  "language": "en",
+  "pipeline":"",
+  "path":"./models/nlu",
+  "data":"./data/data.json"
+}

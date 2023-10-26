@@ -1,0 +1,419 @@
+sklearn-crfsuite==0.3.6
+
+- rule: Ask anytime the user greets
+  steps:
+  - intent: greet
+  - action: utter_greet_question
+
+
+ - intent: greet_question
+  examples: |
+    - Thank you for contacting CrusaderSterling Pensions! How may I help you?
+    - Thank you for contacting CrusaderSterling Pensions! Please let us know how we can help you.
+    - Thank you for contacting CrusaderSterling Pensions! Please let us know how may we help you.
+
+how a rasa action is called
+
+{
+  "next_action": "string",
+  "sender_id": "string",
+  "tracker": {
+    "conversation_id": "default",
+    "slots": {},
+    "latest_message": {},
+    "latest_event_time": 1537645578.314389,
+    "followup_action": "string",
+    "paused": false,
+    "events": [],
+    "latest_input_channel": "rest",
+    "active_loop": {},
+    "latest_action": {}
+  },
+  "domain": {
+    "config": {},
+    "session_config": {},
+    "intents": [],
+    "entities": [],
+    "slots": {},
+    "responses": {},
+    "actions": [],
+    "forms": {},
+    "e2e_actions": []
+  },
+  "version": "version"
+}
+
+
+how an action responds
+
+{
+  "events": [{}],
+  "responses": [{}]
+}
+
+an example:
+
+{
+  "events":[
+    ...
+  ],
+  "responses":[
+    {
+      "template":"utter_greet",
+      "name":"Sara"
+    }
+  ]
+}
+
+
+use ubuntu ooooo for rasa
+
+
+  get_change_employer:
+  get_nok:
+  get_pin:
+  get_account_statement:
+
+
+
+    - intent: affirm
+    - action: get_pin
+
+    - My pin number is pen110113108022 {"entity": "phone_number", "value": "credit"}
+    - My rsa number is pen110113108022
+    - My rsa pin number is pen110113108022
+    - My rsa pin is pen110113108022
+    - pen110113108022
+    - 110113108022
+    - My pin number is 110113108022
+
+
+
+- regex: rsa_pin
+  examples: |
+    - PEN\d{12}
+
+slots:
+  slot_name:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: phone_number
+
+- rule: get the user pin
+  steps:
+    - intent: get_phone_number
+    - action: get_pin
+
+- story: pin 2
+  steps:
+  - intent: pin
+  - action: utter_pin
+  - intent: affirm
+  - action: utter_number
+  - intent: get_phone_number
+    entities:
+      - phone_number: null
+  - action: utter_no_phone
+  - action: utter_goodbye
+
+
+  utter_no_phone:
+    - text: "You did not provide your phone number"
+
+
+#  phone_form:
+#    get_phone:
+#      - type: from_entity
+#        entity: phone
+
+
+#- story: pin 1
+#  steps:
+#  - intent: pin
+#  - action: utter_pin
+#  - intent: affirm
+#  - action: utter_ask_get_phone
+#  - action: phone_form
+#  - active_loop: phone_form
+#  - action: get_pin
+
+
+#- story: pin 2
+#  steps:
+#  - intent: pin
+#  - action: utter_pin
+#  - intent: deny
+#  - action: utter_goodbye
+
+
+- story: pin 3
+#  condition:
+#  # condition that form is active
+#  - active_loop: phone_form
+  steps:
+    # form is deactivated
+    - action: phone_form
+    - active_loop: null
+    - slot_was_set:
+        - get_phone: null
+    # the actions we want to run when the form
+    - action: get_pin
+
+
+- intent: get_phone_number
+  examples: |
+    - My phone number is [07058563520] {"entity":"phone", "value":"07058563520"}
+    - My mobile number is [07060403911] {"entity":"phone", "value":"07060403911"}
+    - My number is [07036256369] {"entity":"phone", "value":"07036256369"}
+    - [08052914729] {"entity":"phone", "value":"08052914729"}
+    - [08100590160] {"entity":"phone", "value":"08100590160"}
+    - My phone is [08106613091] {"entity":"phone", "value":"08106613091"}
+    - Phone [09034418756] {"entity":"phone", "value":"09034418756 "}
+
+
+#slots:
+#  get_phone:
+#    type: text
+#    influence_conversation: false
+#    mappings:
+#      - type: from_text
+#  get_pen:
+#    type: text
+#    influence_conversation: false
+#    mappings:
+#      - type: from_text
+
+
+  utter_details_thanks:
+    - text: "Thanks for providing your  phone number\n  your rsa pin: {get_phone}"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+#forms:
+#  phone_form:
+#    required_slots:
+#      - get_phone
+#
+#  pen_form:
+#    required_slots:
+#      - get_pen
+
+#
+#- rule: Activate Nok Form
+#  steps:
+#    - intent: affirm_balance_pen
+#    - action: nok_form
+#    - active_loop: nok_form
+#
+#- rule: Submit Nok Form
+#  condition:
+#  # condition that form is active
+#  - active_loop: nok_form
+#  steps:
+#  # form is deactivated
+#  - action: nok_form
+#  - active_loop: null
+#  - slot_was_set:
+#    - surname: null
+#  # the actions we want to run when the form
+#  - action: action_change_nok
+
+#
+#- intent: get_surname
+#  examples: |
+#    - [Alozie](surname)
+#    - [Smith](surname)
+#    - [Bayo](surname)
+#    - [Bamidele](surname)
+#    - [Bliken](surname)
+#    - [David](surname)
+#    - [Joshua](surname)
+#    - [Azeez](surname)
+#    - [Kelvin](surname)
+#    - [Udoma](surname)
+#    - [Charles](surname)
+#    - [Clarke](surname)
+#    - [Kimminich](surname)
+#    - [Daughtry](surname)
+#    - [Peter](surname)
+#    - [Adewale](surname)
+
+
+#
+#- story: nok 1
+#  steps:
+#  - intent: greet
+#  - action: utter_greet
+#  - action: utter_greet_question
+#  - intent: nok
+#  - action: utter_ask_surname
+#
+#- story: nok 2
+#  steps:
+#    - intent: get_surname
+#    - action: utter_ask_nok
+
+#  surname:
+#      type: text
+#      influence_conversation: false
+#      mappings:
+#        - type: from_entity
+#          entity: surname
+
+
+#  nok_form:
+#    required_slots:
+#      - surname
+
+#  - nok
+
+#  - surname
+
+
+#  - utter_ask_nok
+#  - action_get_nok
+
+#  - action_change_nok
+- get_surname
+
+
+#
+#- rule: Activate Nok Form
+#  steps:
+#    - intent: get_surname
+#    - action: nok_form
+#    - active_loop: nok_form
+#
+#- rule: Submit Nok Form
+#  condition:
+#  # condition that form is active
+#  - active_loop: nok_form
+#  steps:
+#  # form is deactivated
+#  - action: nok_form
+#  - active_loop: null
+#  - slot_was_set:
+#    - surname: null
+#  # the actions we want to run when the form
+#  - action: action_change_nok
+
+
+
+# class ActionChangeNok(Action):
+#
+#     def name(self) -> Text:
+#         return "action_change_nok"
+#
+#     def run(self, dispatcher: CollectingDispatcher,
+#             tracker: Tracker,
+#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+#
+#         surname = tracker.get_slot("surname")
+#         pin = next(tracker.get_latest_entity_values("pennum"), None)
+#
+#         if pin:
+#             user_details_db = get_user_pin(pin.lower())
+#             name = user_details_db["name"].split()
+#             if surname == name[1]:
+#                 print("Surname Tallys")
+#                 result = update_user_nok(pin.lower())
+#                 if not result:
+#                     response = "Got an error, please enter the correct details"
+#                     dispatcher.utter_message(response)
+#                 else:
+#                     response = "Hey, your next of kin update \n{}".format(result['message'])
+#                     dispatcher.utter_message(response)
+#             else:
+#                 response = "Please enter the correct details"
+#                 dispatcher.utter_message(response)
+#         else:
+#             response = "invalid response: {}".format(pin)
+#             dispatcher.utter_message(response)
+#         return []
+
+#  nok_form:
+#    required_slots:
+#      - surname
+#
+#  relationship_form:
+#    required_slots:
+#      - relationship
+
+- intent: get_employer
+  examples: |
+    - [john.doe@example.com](employer)
+    - [user@email.com](employer)
+    - [your.name@example.org](employer)
+    - [my.new.email@example.net](employer)
+    - [new.email@email.org](employer)
+    - [updated.email@example.com](employer)
+
+
+- rule: Request pen anytime the user intents employer
+  steps:
+  - intent: get_employer
+  - action: utter_ask_pennum
+
+
+- rule: Perform nlu fallback action
+  steps:
+    - intent: nlu_fallback
+    - action: action_nlu_fallback
+
+
+- rule: Handle unallowed intents
+  steps:
+    - intent: '*'
+    - action: action_nlu_fallback
+
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+
+# NewlyAdded
+# class ActionSessionStart(Action):
+#     def name(self) -> Text:
+#         return "action_session_start"
+#
+#     async def run(self, dispatcher, tracker, domain):
+#         # the session should begin with a `session_started` event
+#         dispatcher.utter_message(template="utter_greet")
+#         events = [SessionStarted()]
+#
+#         # an `action_listen` should be added at the end as a user message follows
+#         events.append(ActionExecuted("action_listen"))
+#
+#         return events
+
+# class ActionNLUFallback(Action):
+#     def name(self) -> Text:
+#         return "action_nlu_fallback"
+#
+#     def run(
+#             self,
+#             dispatcher: CollectingDispatcher,
+#             tracker: Tracker,
+#             domain: Dict[Text, Any],
+#     ) -> List[EventType]:
+#         action_events = [e for e in tracker.events if e["event"] == "action"]
+#         if len(action_events) > 1 and action_events[-2].get("name") == "action_nlu_fallback":
+#             dispatcher.utter_message(template="utter_goodbye")
+#         else:
+#             response = "I'm sorry, I can't assist with that request. Ask something else."
+#             dispatcher.utter_message(response)
