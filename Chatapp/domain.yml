@@ -1,0 +1,149 @@
+version: "3.1"
+
+entities:
+  - phonenum
+  - pennum
+  - surname
+  - relationship
+  - employer
+  - statedate
+
+intents:
+  - greet
+  - goodbye
+  - deny
+  - bot_challenge
+  - affirm_pin:
+      use_entities:
+        - phonenum
+  - rsa_balance
+  - account_statement
+  - pin
+  - nok
+  - negation
+  - change_employer
+  - nok_relationship
+  - affirm_balance_surname
+  - affirm_balance_pen:
+      use_entities:
+        - pennum
+  - get_surname:
+      use_entities:
+        - surname
+  - set_employer:
+      use_entities:
+        - employer
+  - statement_date:
+      use_entities:
+        - statedate
+
+forms:
+  pin_form:
+    required_slots:
+      - phonenum
+
+  balance_form:
+    required_slots:
+      - pennum
+
+slots:
+  phonenum:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: phonenum
+        intent: affirm_pin
+  pennum:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: from_entity
+        entity: pennum
+        intent: affirm_balance_pen
+  surname:
+      type: text
+      influence_conversation: false
+      mappings:
+        - type: from_entity
+          entity: surname
+          intent: get_surname
+  relationship:
+      type: text
+      influence_conversation: false
+      mappings:
+        - type: from_entity
+          entity: relationship
+          intent: nok_relationship
+  employer:
+      type: text
+      influence_conversation: false
+      mappings:
+        - type: from_entity
+          entity: employer
+          intent: set_employer
+  statedate:
+      type: text
+      influence_conversation: false
+      mappings:
+        - type: from_entity
+          entity: statedate
+          intent: statement_date
+
+responses:
+
+  utter_did_that_help:
+    - text: "Did that help you?"
+
+  utter_greet:
+  - text: "Hello, welcome to CrusaderSterling Pensions.
+  \nI am Cara, and i am here to provide you with quick and convenient assistance anytime you need it.
+  \nTo get started, all you have to do is type in your request, and i will guide you through the process step by step. It's that simple"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am CrusaderSterling Pensions AI Bot!"
+
+  utter_set_employer:
+  - text: "Congratulations on your new job! \nEnter the initials of your company name e.g. CPL"
+
+  utter_ask_nok:
+  - text: "Enter Your Next of kin relationship details e.g. Wife"
+
+  utter_ask_statedate:
+  - text: "Enter a date for your statement"
+
+  utter_greet_question:
+    - text: "Hello, here are some of the actions I can help you with: Balance, Change Employer, Statement, Pin and Next of Kin."
+
+  utter_ask_phonenum:
+    - text: "Enter your phone number below. e.g. 07058563411"
+
+  utter_ask_pennum:
+    - text: "Enter your rsa pin e.g. pen110113108022"
+
+  utter_ask_surname:
+    - text: "Kindly enter your surname here e.g. Akinduro"
+
+actions:
+  - validate_phone_value
+  - validate_balance_form
+  - utter_ask_pennum
+  - utter_ask_phonenum
+  - utter_ask_nok
+  - utter_ask_surname
+  - utter_set_employer
+  - utter_ask_statedate
+  - action_get_pin
+  - action_get_rsa_balance
+  - action_get_nok
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+  default_stream_reading_timeout_in_seconds: 10

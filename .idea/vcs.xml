@@ -3,8 +3,8 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/AIChatbot" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/ALWeb" vcs="Git" />
-    <mapping directory="$PROJECT_DIR$/ALWeb/AIChatbot" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Chatapp/ALWeb" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Chatapp/ALWeb/AIChatbot" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/cpl1" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/cpl1/AIChatbot" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/rasa" vcs="Git" />

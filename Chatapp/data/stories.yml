@@ -1,0 +1,42 @@
+version: "3.1"
+
+stories:
+
+- story: pin 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_greet_question
+  - intent: pin
+  - action: utter_ask_phonenum
+
+- story: rsa_balance 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - action: utter_greet_question
+  - intent: rsa_balance
+  - action: utter_ask_pennum
+
+- story: change_employer 1
+  steps:
+  - intent: change_employer
+  - action: utter_set_employer
+  - intent: set_employer
+  - action: utter_ask_pennum
+
+- story: nok 1
+  steps:
+  - intent: nok
+  - action: utter_ask_nok
+  - intent: nok_relationship
+  - action: utter_ask_surname
+  - intent: get_surname
+  - action: utter_ask_pennum
+
+- story: account_statement 1
+  steps:
+  - intent: account_statement
+  - action: utter_ask_statedate
+  - intent: statement_date
+  - action: utter_ask_pennum

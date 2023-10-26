@@ -1,0 +1,92 @@
+version: "3.1"
+
+rules:
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say deny anytime the user says goodbye
+  steps:
+  - intent: deny
+  - action: utter_goodbye
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+- rule: say no
+  steps:
+    - intent: negation
+    - action: utter_goodbye
+
+- rule: Request phone_no anytime the user intents pin
+  steps:
+    - intent: pin
+    - action: utter_ask_phonenum
+
+- rule: Request balance anytime the user intents balance
+  steps:
+    - intent: rsa_balance
+    - action: utter_ask_pennum
+
+- rule: Request employer change anytime the user intents employer
+  steps:
+    - intent: set_employer
+    - action: utter_ask_pennum
+
+- rule: Request nok change anytime the user intents nok
+  steps:
+    - intent: get_surname
+    - action: utter_ask_pennum
+
+- rule: Request statement change anytime the user intents statements
+  steps:
+    - intent: statement_date
+    - action: utter_ask_pennum
+
+- rule: Activate Pin Form
+  steps:
+    - intent: affirm_pin
+    - action: pin_form
+    - active_loop: pin_form
+
+- rule: Submit Pin Form
+  condition:
+  # condition that form is active
+  - active_loop: pin_form
+  steps:
+  # form is deactivated
+  - action: pin_form
+  - active_loop: null
+  - slot_was_set:
+    - phonenum: null
+  # the actions we want to run when the form
+  - action: action_get_pin
+
+- rule: Activate Balance Form
+  steps:
+    - intent: affirm_balance_pen
+    - action: balance_form
+    - active_loop: balance_form
+
+- rule: Submit Balance Form
+  condition:
+  # condition that form is active
+  - active_loop: balance_form
+  steps:
+  # form is deactivated
+  - action: balance_form
+  - active_loop: null
+  - slot_was_set:
+    - pennum: null
+  # the actions we want to run when the form
+  - action: action_get_rsa_balance
+

@@ -1,0 +1,262 @@
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - morning
+    - hey there
+    - let's go
+    - hey dude
+    - good morning
+    - good evening
+    - good afternoon
+    - Please i have a request
+
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: affirm_pin
+  examples: |
+    - [07058563520](phonenum)
+    - [07036256369](phonenum)
+    - [08052914729](phonenum)
+    - [07060403411](phonenum)
+    - [09071342882](phonenum)
+    - [08158625159](phonenum)
+    - [08023748942](phonenum)
+    - [09013422158](phonenum)
+    - [08101517874](phonenum)
+    - [07040392006](phonenum)
+    - [07064626328](phonenum)
+
+- intent: affirm_balance_pen
+  examples: |
+    - [PEN110113108089](pennum)
+    - [pen110113108026](pennum)
+    - [pen1100908036367](pennum)
+    - [PEN110090636367](pennum)
+    - [pen110113123022](pennum)
+    - [pen102113108052](pennum)
+    - [pen102113118027](pennum)
+
+- intent: rsa_balance
+  examples: |
+    - I want to retrieve my balance
+    - Can I get my account balance
+    - I need my rsa balance
+    - Help me with my balance
+    - what is my balance
+    - I do not know my balance
+    - Can I know my balance
+    - Please provide my rsa balance
+    - Please provide my savings balance
+    - Can I get my balance
+    - Can I get my rsa balance
+
+- intent: account_statement
+  examples: |
+    - Can i get my account statement
+    - Help out with my statement
+    - Help me with my account statement
+    - I no longer receive quarterly update on my pension status
+    - I have not been receiving updates on my pension remittance
+    - Please I haven't receive a statement since
+    - I have not received my alart from 
+    - Provide my statement
+    - Provide my account statement
+    - I also want to know my pension status
+    - I made payment into my AVC account for the month
+    - I have not gotten the alert
+    - Please provide my statement
+    - Please provide my account statement
+    - I need to access my pension account
+    - Give me my statement
+    - My account is yet to be credited since I paid
+    - I haven't seen my pension alert since
+    - Can I have my account statement
+    - Show me my account statement
+    - Can you please provide my account break down
+
+- intent: pin
+  examples: |
+    - how can i retrieve my pin
+    - Please i forgot my pin
+    - I need my pin
+    - Can you help out with my pin
+    - Kindly check my pension PIN number
+    - I lost my crusader pension details
+    - I have forgotten my pension pin
+    - What is my pin
+    - I'm urgently in need of my RSA PIN
+    - Please provide my pin
+    - Can i get my pin
+    - I have forgotten my pin
+    - I do not know my pin
+    - I want to know my crusader sterling account number
+    - Please I want to know my pension account number
+    - I want to know my account number
+    - Asking me for an account number
+
+- intent: nok
+  examples: |
+    - change my nok
+    - Pls help me change my next of kin
+    - Can you help me change my nok
+    - Can you help me change my next kin
+    - Can you help me change my kin
+    - Can you change my nok
+    - Can you change my next of kin
+    - Can you update my nok
+    - Can you update my next of kin
+    - Can you help update my next of kin
+    - I want to change my nok
+    - I want to change my next of kin
+    - Help change my nok
+    - Help change my next of kin
+
+- intent: change_employer
+  examples: |
+    - Change my employer
+    - I want to change my employer
+    - Working in a new place 
+    - What's the procedure when one gets employment 
+    - To another employer
+    - Can you help me change my employer
+    - I need you to change my employer
+    - Help me change my employer
+    - Can you change my employer
+    - Please change my employer
+
+- intent: get_surname
+  examples: |
+    - [Alozie](surname)
+    - [Smith](surname)
+    - [Bayo](surname)
+    - [Bamidele](surname)
+    - [Bliken](surname)
+    - [David](surname)
+    - [Joshua](surname)
+    - [Azeez](surname)
+    - [Kelvin](surname)
+    - [Udoma](surname)
+    - [Charles](surname)
+    - [Clarke](surname)
+    - [Kimminich](surname)
+    - [Daughtry](surname)
+    - [Peter](surname)
+    - [Adewale](surname)
+
+- intent: set_employer
+  examples: |
+    - [AC](employer)
+    - [XYZ](employer)
+    - [GI](employer)
+    - [SSI](employer)
+    - [QI](employer)
+    - [GHF](employer)
+    - [SLG](employer)
+    - [IT](employer)
+    - [OWE](employer)
+    - [PAP](employer)
+    - [SPIL](employer)
+    - [HCP](employer)
+    - [BSC](employer)
+    - [SRGK](employer)
+    - [SPCS](employer)
+
+- intent: statement_date
+  examples: |
+    - [January 1](statedate)
+    - [May 9](statedate)
+    - [02/14](statedate)
+    - [03/22](statedate)
+    - [04-05](statedate)
+    - [08-07](statedate)
+    - [1012](statedate)
+    - [1225](statedate)
+    - [13/02/14](statedate)
+    - [08-07-23](statedate)
+    - [9th September,2023](statedate)
+    - [2nd April, 2013](statedate)
+
+- intent: negation
+  examples: |
+    - No
+    - can't
+    - Not interested
+    - Decline
+    - I won't
+    - Not now
+    - No thanks
+    - I disagree
+    - I can't
+    - I'll pass
+    - Nah
+    - That's wrong
+    - I Beg to differ
+    - Conflicting idea
+    - Not agreeing
+    - I'm opposing
+    - Not so
+    - I'd differ
+    - I refuse
+    - decline
+    - Rejecting
+    - Can't accept
+    - Politely no
+    - Not joining
+
+- intent: nok_relationship
+  examples: |
+    - [Father](relationship)
+    - [Brother](relationship)
+    - [Son](relationship)
+    - [Daughter](relationship)
+    - [Wife](relationship)
+    - [Husband](relationship)
+    - [Niece](relationship)
+    - [Nephew](relationship)
+    - [Cousin](relationship)
+    - [Sister Inlaw](relationship)
+    - [Brother Inlaw](relationship)
+    - [Inlaw](relationship)
+    - [Mother](relationship)
+    - [Step Brother](relationship)
+    - [Step Sister](relationship)
+    - [Step Daughter](relationship)
+    - [Step Son](relationship)
+    - [Step Mother](relationship)
+    - [Step Father](relationship)
