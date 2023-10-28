@@ -1,0 +1,7 @@
+{
+  "rule_only_slots": [],
+  "rule_only_loops": [
+    "pin_form",
+    "balance_form"
+  ]
+}
